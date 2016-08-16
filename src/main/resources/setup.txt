@@ -1,0 +1,2 @@
+1. From http://algs4.cs.princeton.edu/code/ download the library algs4.jar and the data algs4-data.zip. Data must be placed in src/main/resources directory. Library wherever you want.
+2. Add library to the classpath 
