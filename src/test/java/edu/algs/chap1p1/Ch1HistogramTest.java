@@ -1,4 +1,4 @@
-package edu.algs.chap1;
+package edu.algs.chap1p1;
 
 import org.junit.Test;
 

@@ -1,10 +1,6 @@
-package edu.algs.chap1;
+package edu.algs.chap1p1;
 
 import org.junit.Test;
-
-import java.beans.Transient;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
