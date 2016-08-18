@@ -1,24 +1,15 @@
 package edu.algs.chap1p2;
 
-import edu.princeton.cs.algs4.Interval1D;
-import edu.princeton.cs.algs4.StdIn;
-import edu.princeton.cs.algs4.StdOut;
+import edu.princeton.cs.algs4.*;
 
 import java.util.*;
 
-/**
- * 1.2.3
- * Write an Interval2D client that takes command-line arguments N, min, and max
- * and generates N random 2D intervals whose width and height are uniformly distributed between min and max
- * in the unit square.
- * Draw them on StdDraw and print the number of pairs of intervals that intersect
- * and the number of intervals that are contained in one another.
- */
 public class Intervals {
 
     public static void main(String[] args) {
         Intervals client = new Intervals();
-        client.interval1dIntersections(5);
+        //client.interval1dIntersections(5);
+        client.interval2dIntersections(10, 0.1, 0.75);
     }
 
     /**
@@ -71,6 +62,44 @@ public class Intervals {
             Interval1D second = iterator.next();
             StdOut.println("Interval " + first + " intersects with " + second);
         }
+    }
+
+    /**
+     * 1.2.3
+     * Write an Interval2D client that takes command-line arguments N, min, and max
+     * and generates N random 2D intervals whose width and height are uniformly distributed between min and max
+     * in the unit square.
+     * Draw them on StdDraw and print the number of pairs of intervals that intersect.
+     * (in the book there is also a requirement to count how many intervals are contained in another, but
+     * that would require to calculate it outside the Interval2D API, so for now is ommited)
+     */
+    private void interval2dIntersections(int n, double min, double max) {
+        int intersections = 0;
+        List<Interval2D> intervals = generateIntervals2d(n, min, max);
+
+        for (int i = 0; i < intervals.size(); i++) {
+            Interval2D first = intervals.get(i);
+            first.draw();
+            for (int j = i + 1; j < intervals.size(); j++) {
+                Interval2D second = intervals.get(j);
+                if(first.intersects(second)) intersections++;
+            }
+        }
+        StdOut.println("Found " + intersections + " intersections.");
+    }
+
+    private List<Interval2D> generateIntervals2d(int n, double min, double max) {
+        List<Interval2D> intervals = new ArrayList<>(n);
+        for (int i = 0; i < n; i++) {
+            double x1 = StdRandom.uniform(min, max);
+            double x2 = StdRandom.uniform(min, max);
+            double y1 = StdRandom.uniform(min, max);
+            double y2 = StdRandom.uniform(min, max);
+            intervals.add(new Interval2D(
+                    new Interval1D(Math.min(x1, x2), Math.max(x1, x2)),
+                    new Interval1D(Math.min(y1, y2), Math.max(y1, y2))));
+        }
+        return intervals;
     }
 
 }
