@@ -36,7 +36,7 @@ enum Operation {
         throw new IllegalArgumentException("No such operation supported: " + s);
     }
 
-    static boolean isOperation(String s){
+    static boolean isOperation(String s) {
         for (Operation op : Operation.values()) {
             if (op.symbol.equals(s)) {
                 return true;

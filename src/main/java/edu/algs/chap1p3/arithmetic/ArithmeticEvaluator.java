@@ -1,8 +1,7 @@
 package edu.algs.chap1p3.arithmetic;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
+import java.util.StringTokenizer;
 
 /**
  * Program gets as input space-separated infix arithmetical expression, parses it to postfix and computes value.
@@ -14,8 +13,53 @@ import java.util.Stack;
  */
 class ArithmeticEvaluator {
 
-    List<String> parseInfixExpression(String input) {
-        return new ArrayList<>();
+    Stack<String> parseInfixExpression(String input) {
+        Stack<String> ops = new Stack<>();
+        Stack<String> result = new Stack<>();
+        StringTokenizer tokenizer = new StringTokenizer(input);
+        while (tokenizer.hasMoreTokens()) {
+            String token = tokenizer.nextToken();
+            if (isOperator(token)) {
+                if (ops.empty() || ops.peek().equals("(") || token.equals("(")) {
+                    ops.push(token);
+                } else if (token.equals(")")) {
+                    while (!ops.peek().equals("(")) {
+                        result.push(ops.pop());
+                    }
+                    ops.pop(); // (
+                } else {
+                    while (!ops.empty() && precedence(token) < precedence(ops.peek())) {
+                        result.push(ops.pop());
+                    }
+                    if (ops.empty()) {
+                        ops.push(token);
+                    } else {
+                        if (precedence(token) > precedence(ops.peek())) {
+                            ops.push(token);
+                        } else if (precedence(token) == precedence(ops.peek())) {
+                            result.push(ops.pop());
+                            ops.push(token);
+                        }
+                    }
+                }
+            } else {
+                result.push(token);
+            }
+        }
+        while (!ops.isEmpty()) result.push(ops.pop());
+
+        return result;
+    }
+
+    private boolean isOperator(String token) {
+        String operators = "+-*/()";
+        return operators.contains(token);
+    }
+
+    private int precedence(String operator) {
+        if ("+-".contains(operator)) return 1;
+        if ("*/".contains(operator)) return 2;
+        throw new IllegalArgumentException("No such operator supported: " + operator);
     }
 
     double evaluatePostfix(Stack<String> tokens) {
@@ -49,7 +93,7 @@ class ArithmeticEvaluator {
                 //noinspection ResultOfMethodCallIgnored
                 Double.parseDouble(token);
                 operands++;
-                if(operations==0 || operands == operations+2){
+                if (operations == 0 || operands == operations + 2) {
                     throw new IllegalArgumentException("Too much operands: " + operands + " for operations: " + operations);
                 }
             } catch (NumberFormatException e) {

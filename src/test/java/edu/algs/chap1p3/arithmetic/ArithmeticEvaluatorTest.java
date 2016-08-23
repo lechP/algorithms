@@ -12,6 +12,66 @@ public class ArithmeticEvaluatorTest {
     private ArithmeticEvaluator sut = new ArithmeticEvaluator();
 
     @Test
+    public void shouldParseSimpleAddition() throws Exception {
+        String input = "2 + 3";
+        //when
+        Stack<String> result = sut.parseInfixExpression(input);
+        //then
+        assertThat(result.pop()).isEqualTo("+");
+        assertThat(result.pop()).isEqualTo("3");
+        assertThat(result.pop()).isEqualTo("2");
+    }
+
+    @Test
+    public void shouldParseComplexExpressionWithDifferentPrecedences() throws Exception {
+        String input = "2 + 3 * 4 - 5 / 6 * 7";
+        //when
+        Stack<String> result = sut.parseInfixExpression(input);
+        //then
+        assertThat(result.pop()).isEqualTo("-");
+        assertThat(result.pop()).isEqualTo("*");
+        assertThat(result.pop()).isEqualTo("7");
+        assertThat(result.pop()).isEqualTo("/");
+        assertThat(result.pop()).isEqualTo("6");
+        assertThat(result.pop()).isEqualTo("5");
+        assertThat(result.pop()).isEqualTo("+");
+        assertThat(result.pop()).isEqualTo("*");
+        assertThat(result.pop()).isEqualTo("4");
+        assertThat(result.pop()).isEqualTo("3");
+        assertThat(result.pop()).isEqualTo("2");
+    }
+
+    @Test
+    public void shouldParseExpressionWithParentheses() throws Exception {
+        String input = "( 2 + 3 ) * 4";
+        //when
+        Stack<String> result = sut.parseInfixExpression(input);
+        //then
+        assertThat(result.pop()).isEqualTo("*");
+        assertThat(result.pop()).isEqualTo("4");
+        assertThat(result.pop()).isEqualTo("+");
+        assertThat(result.pop()).isEqualTo("3");
+        assertThat(result.pop()).isEqualTo("2");
+    }
+
+    @Test
+    public void shouldParseComplexExpressionWithParentheses() throws Exception {
+        String input = "1 * ( 2 + 3 * 4 ) + 5";
+        //when
+        Stack<String> result = sut.parseInfixExpression(input);
+        //then
+        assertThat(result.pop()).isEqualTo("+");
+        assertThat(result.pop()).isEqualTo("5");
+        assertThat(result.pop()).isEqualTo("*");
+        assertThat(result.pop()).isEqualTo("+");
+        assertThat(result.pop()).isEqualTo("*");
+        assertThat(result.pop()).isEqualTo("4");
+        assertThat(result.pop()).isEqualTo("3");
+        assertThat(result.pop()).isEqualTo("2");
+        assertThat(result.pop()).isEqualTo("1");
+    }
+
+    @Test
     public void shouldEvaluateSimpleAdd() throws Exception {
         Stack<String> tokens = new Stack<>();
         tokens.push("12.6");
