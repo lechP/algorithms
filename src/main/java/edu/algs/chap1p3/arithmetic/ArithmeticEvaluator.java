@@ -28,19 +28,10 @@ class ArithmeticEvaluator {
                     }
                     ops.pop(); // (
                 } else {
-                    while (!ops.empty() && precedence(token) < precedence(ops.peek())) {
+                    while (!ops.empty() && precedence(token) <= precedence(ops.peek())) {
                         result.push(ops.pop());
                     }
-                    if (ops.empty()) {
-                        ops.push(token);
-                    } else {
-                        if (precedence(token) > precedence(ops.peek())) {
-                            ops.push(token);
-                        } else if (precedence(token) == precedence(ops.peek())) {
-                            result.push(ops.pop());
-                            ops.push(token);
-                        }
-                    }
+                    ops.push(token);
                 }
             } else {
                 result.push(token);

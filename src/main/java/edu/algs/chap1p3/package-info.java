@@ -44,8 +44,6 @@
  * of a folder as a command-line argument and prints out all of the files contained in that folder,
  * with the contents of each folder recursively listed (indented) under that folder’s name. Hint : Use a queue, and see java.io.File.
  * <p>
- * 1.3.51  Expression evaluation with precedence order. Extend Evaluate (page 129) to handle arithmetic expressions
- * that are not fully parenthesized, using the standard precdence order for the operators +, -, *, and /.
  */
 package edu.algs.chap1p3;
 
