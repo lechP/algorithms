@@ -22,7 +22,7 @@ public class FileListerTest {
                 "\t\t'---fileX.txt\n" +
                 "\t\t'---fileY.txt\n" +
                 "\t'---fileX.txt\n";
-        String result = sut.printFiles("src/test/resources/edu/algs/p3/testDir");
+        String result = sut.printFiles("src/test/resources/edu/algs/chap1/p3/testDir");
         assertThat(result).isEqualTo(expected);
     }
 
