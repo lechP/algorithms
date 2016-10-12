@@ -1,11 +1,11 @@
 package edu.algs.chap1.p5.uf;
 
-public abstract class AbstractUnionFind implements UnionFind {
+abstract class AbstractUnionFind implements UnionFind {
 
     protected int count;
-    protected int[] id;
+    int[] id;
 
-    public AbstractUnionFind(int N) {
+    AbstractUnionFind(int N) {
         count = N;
         id = new int[N];
         for (int i = 0; i < id.length; i++) {

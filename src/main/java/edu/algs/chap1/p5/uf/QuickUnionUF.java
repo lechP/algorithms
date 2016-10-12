@@ -9,9 +9,9 @@ package edu.algs.chap1.p5.uf;
  * Specifically, the id[] entry for each site is the name of another site in the same component
  * (possibly itself)—we refer to this connection as a link.
  */
-public class QuickUnionUF extends AbstractUnionFind {
+class QuickUnionUF extends AbstractUnionFind {
 
-    public QuickUnionUF(int N) {
+    QuickUnionUF(int N) {
         super(N);
     }
 

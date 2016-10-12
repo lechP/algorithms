@@ -3,7 +3,7 @@ package edu.algs.chap1.p5.uf;
 /**
  * Interface describing Union-find API
  */
-public interface UnionFind {
+interface UnionFind {
 
     /** adds connection between p and q */
     void union(int p, int q);

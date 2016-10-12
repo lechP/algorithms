@@ -19,6 +19,7 @@ import java.util.Scanner;
  * 2. For medium set WQU and QU are comparable (<1ms) and QF is ten times slower (~6ms)
  * 3. For large set (2M pairs) WQU needs 0.25sec, QU... it starts nice but after about 600k pairs dramatically slows down
  *      and I'm not as much curious to wait for it till the finish
+ * 4. WQUPC and WQU need similar amount of time for large set. Some super large set could help.
  */
 public class UnionFindComparator {
 
@@ -39,6 +40,7 @@ public class UnionFindComparator {
         UFInput input = readInput(BASE_DIR + filename);
         System.out.println("Perform analysis for file: " + filename + ". N=" + input.n + " pairs count: " + input.pairs.size());
 
+        analyze(input.pairs, new PathCompressingWeightedQuickUnionUF(input.n));
         analyze(input.pairs, new WeightedQuickUnionUF(input.n));
         analyze(input.pairs, new QuickUnionUF(input.n));
         analyze(input.pairs, new QuickFindUF(input.n));
