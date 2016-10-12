@@ -9,9 +9,9 @@ package edu.algs.chap1.p5.uf;
  * which immediately implies that connected(p, q) reduces to just the test id[p] == id[q]
  * and returns true if and only if p and q are in the same component.
  */
-class QuickFindUF extends AbstractUnionFind {
+public class QuickFindUF extends AbstractUnionFind {
 
-    QuickFindUF(int N) {
+    public QuickFindUF(int N) {
         super(N);
     }
 

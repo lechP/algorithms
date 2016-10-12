@@ -6,9 +6,9 @@ package edu.algs.chap1.p5.uf;
  * the id[] entries of the smaller component to the identifier of the larger component.
  * How does this change affect performance?
  */
-class WeightedQuickUnionUF extends AbstractUnionFind {
+public class WeightedQuickUnionUF extends AbstractUnionFind {
 
-    WeightedQuickUnionUF(int N) {
+    public WeightedQuickUnionUF(int N) {
         super(N);
         size = new int[N];
         for (int i = 0; i < size.length; i++) {

@@ -1,4 +1,6 @@
-package edu.algs.chap1.p5.uf;
+package edu.algs.chap1.p5.uf.compare;
+
+import edu.algs.chap1.p5.uf.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,7 +21,7 @@ import java.util.Scanner;
  * 2. For medium set WQU and QU are comparable (<1ms) and QF is ten times slower (~6ms)
  * 3. For large set (2M pairs) WQU needs 0.25sec, QU... it starts nice but after about 600k pairs dramatically slows down
  *      and I'm not as much curious to wait for it till the finish
- * 4. WQUPC and WQU need similar amount of time for large set. Some super large set could help.
+ * 4. WQUPC and WQU need similar amount of time for large set (WQUPC is slightly faster). Some super large set could help.
  */
 public class UnionFindComparator {
 
