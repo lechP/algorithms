@@ -1,5 +1,6 @@
 package edu.algs.chap1.p4.intgen;
 
+import edu.algs.chap1.util.Problem;
 import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.HashSet;
