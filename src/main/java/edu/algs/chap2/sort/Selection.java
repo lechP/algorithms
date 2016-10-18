@@ -1,9 +1,19 @@
 package edu.algs.chap2.sort;
 
+import edu.algs.chap2.sort.stat.Statistician;
+
 /**
  * Implementation of selection sort
  */
 public class Selection extends AbstractSort {
+
+    public Selection(){
+        super();
+    }
+
+    public Selection(Statistician stat){
+        super(stat);
+    }
 
     @Override
     public void sort(Comparable[] a) {
