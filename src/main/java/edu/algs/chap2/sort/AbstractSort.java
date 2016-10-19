@@ -40,8 +40,8 @@ public abstract class AbstractSort {
      * @return true if sorted, false otherwise
      */
     public boolean isSorted(Comparable[] a) {
-        for (int i = 0; i < a.length; i++) {
-            if (less(a[i], a[i + 1])) return false;
+        for (int i = 1; i < a.length; i++) {
+            if (less(a[i], a[i - 1])) return false;
 
         }
         return true;
