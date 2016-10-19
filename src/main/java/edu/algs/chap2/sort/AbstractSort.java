@@ -55,10 +55,10 @@ public abstract class AbstractSort {
      * @param j index of second element
      */
     protected void swap(Comparable[] a, int i, int j) {
-        stat.notifySwap(a, i, j);
         Comparable temp = a[i];
         a[i] = a[j];
         a[j] = temp;
+        stat.notifySwap(a, i, j);
     }
 
     /**

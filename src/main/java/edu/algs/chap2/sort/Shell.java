@@ -1,9 +1,19 @@
 package edu.algs.chap2.sort;
 
+import edu.algs.chap2.sort.stat.Statistician;
+
 /**
  * Implementation of insertion sort
  */
 public class Shell extends AbstractSort {
+
+    public Shell(Statistician stat) {
+        super(stat);
+    }
+
+    public Shell() {
+
+    }
 
     @Override
     public void sort(Comparable[] a) {
