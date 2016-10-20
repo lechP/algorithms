@@ -1,5 +1,6 @@
 package edu.algs.chap2.p1;
 
+import edu.algs.chap2.rand.RandomGenerator;
 import edu.algs.chap2.sort.*;
 import edu.princeton.cs.algs4.StdRandom;
 
@@ -17,11 +18,15 @@ class SortTimer {
      * @return average time (in nanoseconds) of sorting array of given size with given algorithm
      */
     static double timeRandomInput(SortAlg alg, int N, int T) {
+        return timeRandomInput(alg, N, T, StdRandom::uniform);
+    }
+
+    static double timeRandomInput(SortAlg alg, int N, int T, RandomGenerator generator) {
         double total = 0.0;
         Double[] a = new Double[N];
         for (int t = 0; t < T; t++) {
             for (int i = 0; i < N; i++) {
-                a[i] = StdRandom.uniform();
+                a[i] = generator.generate();
             }
             total += time(alg, a);
         }
