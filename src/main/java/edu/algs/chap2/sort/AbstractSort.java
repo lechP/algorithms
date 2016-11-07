@@ -10,7 +10,7 @@ import edu.algs.chap2.sort.stat.Statistician;
  *
  * It has also component Statistician for further analyses.
  */
-public abstract class AbstractSort {
+public abstract class AbstractSort implements Sort{
 
     private Statistician stat;
 
@@ -61,13 +61,7 @@ public abstract class AbstractSort {
         stat.notifySwap(a, i, j);
     }
 
-    /**
-     * Compares two items and returns true if left item is less than right, false otherwise
-     *
-     * @param left  left item
-     * @param right right item
-     */
-    protected boolean less(Comparable left, Comparable right) {
+    public boolean less(Comparable left, Comparable right) {
         stat.notifyCompare(left, right);
         //noinspection unchecked
         return left.compareTo(right) < 0;

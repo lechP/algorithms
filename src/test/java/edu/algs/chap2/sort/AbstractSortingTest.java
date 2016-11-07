@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public abstract class AbstractSortingTest {
 
-    protected abstract AbstractSort getSut();
+    protected abstract Sort getSut();
 
     @Test
     public void shouldSortGivenString() throws Exception {

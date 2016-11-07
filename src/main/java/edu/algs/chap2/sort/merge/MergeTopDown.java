@@ -1,22 +1,20 @@
-package edu.algs.chap2.sort;
+package edu.algs.chap2.sort.merge;
 
-import edu.algs.chap2.sort.stat.Statistician;
+import edu.algs.chap2.sort.Sort;
 
 /**
  * Implementation of merge sort with top-down approach
  */
-public class MergeTopDown extends BaseMerge {
+public class MergeTopDown implements Sort {
 
-    public MergeTopDown(Statistician stat) {
-        super(stat);
-    }
+    private Merger merger;
 
     public MergeTopDown() {
+        merger = new DefaultMerger();
     }
 
     @Override
     public void sort(Comparable[] a) {
-        temp = new Comparable[a.length];
         sort(a, 0, a.length - 1);
     }
 
@@ -25,7 +23,7 @@ public class MergeTopDown extends BaseMerge {
         int mid = (low + high) / 2;
         sort(a, low, mid);
         sort(a, mid + 1, high);
-        merge(a, low, mid, high);
+        merger.merge(a, low, mid, high);
     }
 
 }

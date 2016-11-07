@@ -1,14 +1,10 @@
-package edu.algs.chap2.sort;
+package edu.algs.chap2.sort.merge;
 
-import edu.algs.chap2.sort.stat.Statistician;
+import edu.algs.chap2.sort.Sort;
 
-public abstract class BaseMerge extends AbstractSort {
+public abstract class BaseMerge implements Sort {
 
     protected Comparable[] temp;
-
-    public BaseMerge(Statistician stat) {
-        super(stat);
-    }
 
     public BaseMerge() {
     }
@@ -30,4 +26,5 @@ public abstract class BaseMerge extends AbstractSort {
             }
         }
     }
+
 }
