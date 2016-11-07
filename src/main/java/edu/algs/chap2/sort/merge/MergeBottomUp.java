@@ -13,6 +13,10 @@ public class MergeBottomUp implements Sort {
         merger = new DefaultMerger();
     }
 
+    public MergeBottomUp(Merger merger) {
+        this.merger = merger;
+    }
+
     @Override
     public void sort(Comparable[] a) {
         int N = a.length;
